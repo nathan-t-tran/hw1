@@ -16,8 +16,7 @@ the function below should be the only one in this file.
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
-  /* Add code here */
-// WRITE YOUR CODE HERE
+  //Base cases: Empty head node, end node?
 }
 
 /* If you needed a helper function, write it here */
