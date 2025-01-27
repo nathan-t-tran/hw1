@@ -1,6 +1,6 @@
 #ifndef SPLIT_H
 #define SPLIT_H
-
+#include <iostream>
 
 struct Node 
 {
@@ -15,6 +15,13 @@ struct Node
     value = v;
     next = n;
   }
+
+  Node() //default constructor
+  {
+    value = 0;
+    next = nullptr;
+  }
+
 };
 
 void split(Node*& in, Node*& odds, Node*& evens);
