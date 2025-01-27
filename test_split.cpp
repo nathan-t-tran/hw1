@@ -10,7 +10,6 @@ g++ split.cpp test_split.cpp -o test_split
 */
 
 #include "split.h"
-#include "split.cpp"
 #include <iostream>
 
 using namespace std;
@@ -36,15 +35,16 @@ int main(int argc, char* argv[])
     head = head->next;
   }
 
-  Node* odds;
-  Node* evens;
+  //Node* odds;
+  //Node* evens;
 
-  split(head, odds, evens);
+  //split(head, odds, evens);
 
+  /*
   while (odds)
   {
     cout << "odds: " << endl;
     cout << odds->value << endl;
     odds = odds->next;
-  }
+  } */
 }
