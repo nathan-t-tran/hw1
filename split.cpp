@@ -9,33 +9,35 @@ To test your program write a separate .cpp file and #include
 split.h.  **Do NOT add main() to this file**.  When you submit
 the function below should be the only one in this file.
 */
-#include <iostream>
+
 #include "split.h"
+#include <iostream>
+using namespace std;
 
 /* Add a prototype for a helper function here if you need */
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
+  cout << "hello" << endl;
+  
   //Base cases: Empty head node
-  if (in->value == 0)
+  if (in == nullptr)
   {
-     odds->value = 0;
-     evens->value = 0;
-     
+    odds = nullptr;
+    evens = nullptr;
+    return;
   }
-
-  if(in->value % 2 == 0) //evens
+  
+  if (in->value % 2 == 0)
   {
-    evens->value = in->value; //sets the value for the current evens node
-    evens = evens->next; //Moves to next node in evens
+    evens = new Node(in->value, nullptr);
+    split(in->next, odds, evens->next);
   }
-  else //odds 
+  else
   {
-    odds->value = in->value; //sets value for current odds node
-    odds = odds->next; //moves to next node in odds
+    odds = new Node(in->value, nullptr);
+    split(in->next, odds->next, evens);
   }
-
-  split(in->next,odds,evens); //recursive call.
   
 }
 

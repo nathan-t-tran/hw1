@@ -13,20 +13,21 @@ g++ split.cpp test_split.cpp -o test_split
 #include <iostream>
 
 using namespace std;
+
 int main(int argc, char* argv[])
 {
-  Node* head;
+  cout << "test" << endl;
+
+  Node* head = new Node(0, nullptr);
   Node* current_item;
   Node* temp = nullptr;
 
-  head = current_item;
+  current_item = head;
 
-  for (int i = 0; i < 6; i++)
+  for (int i = 1; i < 6; i++) 
   {
-    current_item->value = i;
-    temp = new Node;
-    current_item->next = temp;
-    current_item = current_item->next;
+      current_item->next = new Node(i, nullptr);
+      current_item = current_item->next;
   }
 
   for (int i = 0; i < 6; i++)
@@ -35,16 +36,26 @@ int main(int argc, char* argv[])
     head = head->next;
   }
 
-  //Node* odds;
-  //Node* evens;
+  Node* odds = nullptr;
+  Node* evens = nullptr;
 
-  //split(head, odds, evens);
+  split(head, odds, evens);
 
-  /*
+  
+  cout << "Evens list:" << endl;
+  while (evens)
+  {
+      cout << evens->value << " ";
+      evens = evens->next;
+  }
+  cout << endl;
+
+  // Print the odds list
+  cout << "Odds list:" << endl;
   while (odds)
   {
-    cout << "odds: " << endl;
-    cout << odds->value << endl;
-    odds = odds->next;
-  } */
+      cout << odds->value << " ";
+      odds = odds->next;
+  }
+  cout << endl;
 }
