@@ -12,21 +12,18 @@ the function below should be the only one in this file.
 
 #include "split.h"
 #include <iostream>
+#include <cstddef>
 using namespace std;
 
 /* Add a prototype for a helper function here if you need */
-
-const bool DEBUG = false; //Debug var 
+void deleteInput (Node*& in);
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
-  if (DEBUG)
-  {
-    cout << "Beginning of split function" << endl;
-  }
 
-  if (!in) //checks if the initial list is empty
+  if (in == NULL) //checks if the initial list is empty
   {
+    deleteInput(in);
     return;
   }
 
@@ -40,11 +37,16 @@ void split(Node*& in, Node*& odds, Node*& evens)
     odds = new Node (in->value, nullptr);
     split(in->next, odds->next, evens);
   }
-
-  if (DEBUG)
-  {
-    cout << "End of split function" << endl;
-  }
 }
 
 /* If you needed a helper function, write it here */
+void deleteInput (Node*& in)
+{
+  if (in == NULL)
+  {
+    return;
+  }
+
+  in = NULL;
+  deleteInput(in->next);
+}
