@@ -15,38 +15,32 @@ the function below should be the only one in this file.
 #include <cstddef>
 using namespace std;
 
+
 /* Add a prototype for a helper function here if you need */
-void deleteInput (Node*& in);
+
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
-
+  Node* temp_in;
   if (in == NULL) //checks if the initial list is empty
   {
-    deleteInput(in);
     return;
   }
 
   if (in->value % 2 == 0) //checks if even
   {
-    evens = new Node (in->value, nullptr);
-    split(in->next, odds, evens->next);
+    temp_in = in;
+    in = NULL;
+    evens = new Node (temp_in->value, nullptr);
+    split(temp_in->next, odds, evens->next);
   }
   else //else it must be odd
   {
-    odds = new Node (in->value, nullptr);
-    split(in->next, odds->next, evens);
+    temp_in = in;
+    in = NULL;
+    odds = new Node (temp_in->value, nullptr);
+    split(temp_in->next, odds->next, evens);
   }
 }
 
 /* If you needed a helper function, write it here */
-void deleteInput (Node*& in)
-{
-  if (in == NULL)
-  {
-    return;
-  }
-
-  in = NULL;
-  deleteInput(in->next);
-}

@@ -10,6 +10,7 @@ g++ split.cpp test_split.cpp -o test_split
 */
 
 #include "split.h"
+#include "split.cpp"
 #include <iostream>
 
 using namespace std;
@@ -30,14 +31,6 @@ int main(int argc, char* argv[])
   }
 
 
-  //Node* temp_head = head;
-  //cout << "printing list" << endl;
-  /*while (temp_head)
-  {
-    cout << temp_head->value << endl;
-    temp_head = temp_head->next;
-  }*/
-
   //cout << "end of intializing" << endl;
 
   Node* odds = new Node(0, nullptr);
@@ -47,7 +40,7 @@ int main(int argc, char* argv[])
   split(head, odds, evens);
   //cout << "after split" << endl;
 
-  /*cout << "odds: " << endl;
+  cout << "odds: " << endl;
   while (odds)
   {
     cout << odds->value << endl;
@@ -59,5 +52,14 @@ int main(int argc, char* argv[])
   {
     cout << evens->value << endl;
     evens = evens->next;
-  }*/
+  }
+
+  Node* temp_head = head;
+  cout << "printing list" << endl;
+
+  while (temp_head)
+  {
+    cout << temp_head->value << endl;
+    temp_head = temp_head->next;
+  }
 }
