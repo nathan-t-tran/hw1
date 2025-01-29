@@ -16,29 +16,35 @@ using namespace std;
 
 /* Add a prototype for a helper function here if you need */
 
+const bool DEBUG = false; //Debug var 
+
 void split(Node*& in, Node*& odds, Node*& evens)
 {
-  cout << "hello" << endl;
-  
-  //Base cases: Empty head node
-  if (in == nullptr)
+  if (DEBUG)
   {
-    odds = nullptr;
-    evens = nullptr;
+    cout << "Beginning of split function" << endl;
+  }
+
+  if (!in) //checks if the initial list is empty
+  {
     return;
   }
-  
-  if (in->value % 2 == 0)
+
+  if (in->value % 2 == 0) //checks if even
   {
-    evens = new Node(in->value, nullptr);
+    evens = new Node (in->value, nullptr);
     split(in->next, odds, evens->next);
   }
-  else
+  else //else it must be odd
   {
-    odds = new Node(in->value, nullptr);
+    odds = new Node (in->value, nullptr);
     split(in->next, odds->next, evens);
   }
-  
+
+  if (DEBUG)
+  {
+    cout << "End of split function" << endl;
+  }
 }
 
 /* If you needed a helper function, write it here */
