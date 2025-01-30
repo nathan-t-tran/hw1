@@ -25,65 +25,73 @@ size_t ULListStr::size() const
 }
 
 // WRITE YOUR CODE HERE
+
 /**
-  * Adds a new value to the back of the list
-  *   - MUST RUN in O(1)
-  */
-void push_back(const std::string& val)
+ * Adds a new value to the back of the list
+ *   - MUST RUN in O(1)
+ */
+void ULListStr::push_back(const std::string& val)
 {
   
 }
 
 /**
-  * Removes a value from the back of the list
-  *   - MUST RUN in O(1)
-  */
-void pop_back();
+ * Removes a value from the back of the list
+ *   - MUST RUN in O(1)
+ */
+void ULListStr::pop_back()
+{
+
+}
 
 /**
-  * Adds a new value to the front of the list.
-  * If there is room before the 'first' value in
-  * the head node add it there, otherwise, 
-  * allocate a new head node.
-  *   - MUST RUN in O(1)
-  */
-void push_front(const std::string& val);
+ * Adds a new value to the front of the list.
+ * If there is room before the 'first' value in
+ * the head node add it there, otherwise, 
+ * allocate a new head node.
+ *   - MUST RUN in O(1)
+ */
+void ULListStr::push_front(const std::string& val)
+{
+
+}
 
 /**
-  * Removes a value from the front of the list
-  *   - MUST RUN in O(1)
-  */
-void pop_front();
+ * Removes a value from the front of the list
+ *   - MUST RUN in O(1)
+ */
+void ULListStr::pop_front()
+{
+
+}
 
 /**
-  * Returns a const reference to the back element
-  *   - MUST RUN in O(1)
-  */
-std::string const & back() const;
+ * Returns a const reference to the back element
+ *   - MUST RUN in O(1)
+ */
+std::string const & ULListStr::back() const
+{
+  
+}
 
 /**
-  * Returns a const reference to the front element
-  *   - MUST RUN in O(1)
-  */
-std::string const & front() const;
+ * Returns a const reference to the front element
+ *   - MUST RUN in O(1)
+ */
+std::string const & ULListStr::front() const
+{
 
-/**
-  * Overwrites the old value at index, pos, with val
-  *   - Can run in O(n)
-  */
-void set(size_t pos, const std::string& val);
+}
 
-/**
-  * Returns the value at index, pos
-  *   - Can run in O(n)
-  */
-std::string& get(size_t pos);
+/** 
+ * Returns a pointer to the item at index, loc,
+ *  if loc is valid and NULL otherwise
+ *   - MUST RUN in O(n) 
+ */
+std::string* ULListStr::getValAtLoc(size_t loc) const
+{
 
-/**
-  * Returns the value at index, pos
-  *   - Can run in O(n)
-  */
-std::string const & get(size_t pos) const;
+}
 
 void ULListStr::set(size_t loc, const std::string& val)
 {
@@ -93,6 +101,8 @@ void ULListStr::set(size_t loc, const std::string& val)
   }
   *ptr = val;
 }
+
+
 
 std::string& ULListStr::get(size_t loc)
 {
