@@ -9,15 +9,15 @@ You can compile this file like this:
 g++ split.cpp test_split.cpp -o test_split
 */
 
-#include "split.h"
-#include "split.cpp"
-#include <iostream>
+//#include "split.h"
+//#include "split.cpp"
+//#include <iostream>
 
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-  //cout << "test_split begin" << endl;
+  /*cout << "test_split begin" << endl;
 
   Node* head = new Node(1, nullptr);
   Node* current_item;
@@ -31,14 +31,14 @@ int main(int argc, char* argv[])
   }
 
 
-  //cout << "end of intializing" << endl;
+  cout << "end of intializing" << endl;
 
   Node* odds = new Node(0, nullptr);
   Node* evens = new Node(0, nullptr);
 
-  //cout << "calling split" << endl;
+  cout << "calling split" << endl;
   split(head, odds, evens);
-  //cout << "after split" << endl;
+  cout << "after split" << endl;
 
   cout << "odds: " << endl;
   while (odds)
@@ -61,5 +61,5 @@ int main(int argc, char* argv[])
   {
     cout << temp_head->value << endl;
     temp_head = temp_head->next;
-  }
+  }*/
 }

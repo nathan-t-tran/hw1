@@ -25,6 +25,65 @@ size_t ULListStr::size() const
 }
 
 // WRITE YOUR CODE HERE
+/**
+  * Adds a new value to the back of the list
+  *   - MUST RUN in O(1)
+  */
+void push_back(const std::string& val)
+{
+  
+}
+
+/**
+  * Removes a value from the back of the list
+  *   - MUST RUN in O(1)
+  */
+void pop_back();
+
+/**
+  * Adds a new value to the front of the list.
+  * If there is room before the 'first' value in
+  * the head node add it there, otherwise, 
+  * allocate a new head node.
+  *   - MUST RUN in O(1)
+  */
+void push_front(const std::string& val);
+
+/**
+  * Removes a value from the front of the list
+  *   - MUST RUN in O(1)
+  */
+void pop_front();
+
+/**
+  * Returns a const reference to the back element
+  *   - MUST RUN in O(1)
+  */
+std::string const & back() const;
+
+/**
+  * Returns a const reference to the front element
+  *   - MUST RUN in O(1)
+  */
+std::string const & front() const;
+
+/**
+  * Overwrites the old value at index, pos, with val
+  *   - Can run in O(n)
+  */
+void set(size_t pos, const std::string& val);
+
+/**
+  * Returns the value at index, pos
+  *   - Can run in O(n)
+  */
+std::string& get(size_t pos);
+
+/**
+  * Returns the value at index, pos
+  *   - Can run in O(n)
+  */
+std::string const & get(size_t pos) const;
 
 void ULListStr::set(size_t loc, const std::string& val)
 {
@@ -63,3 +122,4 @@ void ULListStr::clear()
   tail_ = NULL;
   size_ = 0;
 }
+
