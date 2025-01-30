@@ -32,7 +32,22 @@ size_t ULListStr::size() const
  */
 void ULListStr::push_back(const std::string& val)
 {
-  
+  if (tail_->last == ARRSIZE) //no more space in the back to add val
+  {
+    Item* temp = tail_; //holds the old address of old tail_
+    tail_ = new Item(); //creates a new tail_
+    tail_->prev = temp; //connects new tail with the old tail
+    tail_->val[0] = val; //adds val to the front of the new array
+    tail_->last = 0; //updates last loc
+    size_++; //increments size
+  }
+  else //there is space to add val
+  {
+    int back_index = tail_->last; //gets the index of the furthest back val in array
+    tail_->val[back_index + 1] = val; //adds the new val to the back of the array.
+    tail_->last = back_index + 1; //updates last loc
+    size_++; //increments size
+  }
 }
 
 /**
@@ -53,7 +68,22 @@ void ULListStr::pop_back()
  */
 void ULListStr::push_front(const std::string& val)
 {
-
+  if (head_->first == 0) //no more room to add val
+  {
+    Item* temp = head_; //holds the address of the old head_
+    head_ = new Item(); //creates a new item
+    head_->next = temp; //connects new head with the old head;
+    head_->val[ARRSIZE - 1] = val; //Sets value at the end of the new array
+    head_->first = ARRSIZE; //updates the new front val loc
+    size_++; //increments size
+  }
+  else //there is room to add val
+  {
+    int front_index = head_->first; //grabs the index from the first 
+    head_->val[front_index - 1] = val; //adds new val to front
+    head_->first = front_index - 1; //updates the new front val loc
+    size_++; //increments size
+  }
 }
 
 /**
@@ -90,6 +120,9 @@ std::string const & ULListStr::front() const
  */
 std::string* ULListStr::getValAtLoc(size_t loc) const
 {
+ std::string* item_atLoc = nullptr;
+
+ if (loc )
 
 }
 
