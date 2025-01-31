@@ -32,7 +32,7 @@ size_t ULListStr::size() const
  */
 void ULListStr::push_back(const std::string& val)
 {
-  if (tail_->last == ARRSIZE && tail_ != nullptr) //no more space in the back to add val
+  if (tail_->last == ARRSIZE) //no more space in the back to add val
   {
     Item* temp = tail_; //holds the old address of old tail_
     tail_ = new Item(); //creates a new tail_
