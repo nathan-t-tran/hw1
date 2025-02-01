@@ -76,7 +76,7 @@ void ULListStr::pop_back()
     if (tail_ == head_) //this means that this is the only Item.
     { 
       tail_ = head_ = NULL; //resets the entire list as empty
-      size_--;
+      size_ = 0;
     }
     else
     {
@@ -148,7 +148,7 @@ void ULListStr::pop_front()
     if (tail_ == head_) //this means that this is the only Item.
     {
       head_ = tail_ = NULL; //resets the entire list as empty
-      size_--;
+      size_ = 0;
     }
     else
     {
