@@ -72,9 +72,9 @@ void ULListStr::pop_back()
   }
   else if (tail_->last - tail_->first == 1) //checks if the the array currently only has one value
   {
+    Item* temp = tail_; //holds tail, so that we can delete after some tasks.
     if (tail_ == head_) //this means that this is the only Item.
-    {
-      delete tail_;
+    { 
       tail_ = head_ = NULL; //resets the entire list as empty
       size_--;
     }
@@ -82,9 +82,9 @@ void ULListStr::pop_back()
     {
       tail_ = tail_->prev;
       tail_->next = NULL;
-      delete tail_;
       size_--;
     }
+    delete temp;
   }
   else
   {
@@ -144,9 +144,9 @@ void ULListStr::pop_front()
   }
   else if (head_->last - head_->first == 1) //checks if the the array currently only has one value
   {
+    Item* temp = head_; //holds head, so we can delete after using.
     if (tail_ == head_) //this means that this is the only Item.
     {
-      delete head_;
       head_ = tail_ = NULL; //resets the entire list as empty
       size_--;
     }
@@ -154,9 +154,9 @@ void ULListStr::pop_front()
     {
       head_ = head_->next;
       tail_->prev = NULL;
-      delete head_;
       size_--;
     }
+    delete temp;
   }
   else
   {
@@ -191,6 +191,12 @@ std::string const & ULListStr::front() const
  */
 std::string* ULListStr::getValAtLoc(size_t loc) const
 {
+  bool debug = true;
+
+  if (debug)
+  {
+    std::cout << "current loc: " << loc << std::endl;
+  }
   std::string* item_atLoc = NULL;
 
   if (loc >= size()) //if location is outside of the bounds of the array
@@ -203,6 +209,10 @@ std::string* ULListStr::getValAtLoc(size_t loc) const
 
   for (int list_index = 0; list_index < loc; list_index++)
   {
+    if (debug)
+    {
+      std::cout << "current val: " << temp->val[array_index] << std::endl;
+    }
     if (array_index == ARRSIZE - 1) //checks if the index has surpassed reached the arrsize.
     {
       temp = temp->next; //moves Item forward
