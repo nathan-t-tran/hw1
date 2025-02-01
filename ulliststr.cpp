@@ -54,7 +54,7 @@ void ULListStr::push_back(const std::string& val)
   else //there is space to add val
   {
     int back_index = tail_->last; //gets the index of the furthest back val in array
-    tail_->val[back_index - 1] = val; //adds the new val to the back of the array.
+    tail_->val[back_index] = val; //adds the new val to the back of the array.
     tail_->last = back_index + 1; //updates last loc
     size_++; //increments size of linked list
   }
