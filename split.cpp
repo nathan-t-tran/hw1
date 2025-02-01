@@ -21,7 +21,7 @@ using namespace std;
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
-  Node* temp_in;
+  Node* temp_in = nullptr;
   if (in == NULL) //checks if the initial list is empty
   {
     return;

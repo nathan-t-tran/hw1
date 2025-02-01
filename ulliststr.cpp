@@ -199,7 +199,7 @@ std::string const & ULListStr::front() const
  */
 std::string* ULListStr::getValAtLoc(size_t loc) const
 {
-  bool debug = true;
+  bool debug = false;
 
   std::string* item_atLoc = NULL;
 
