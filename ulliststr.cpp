@@ -193,10 +193,6 @@ std::string* ULListStr::getValAtLoc(size_t loc) const
 {
   bool debug = true;
 
-  if (debug)
-  {
-    std::cout << "current loc: " << loc << std::endl;
-  }
   std::string* item_atLoc = NULL;
 
   if (loc >= size()) //if location is outside of the bounds of the array
@@ -212,6 +208,8 @@ std::string* ULListStr::getValAtLoc(size_t loc) const
     if (debug)
     {
       std::cout << "current val: " << temp->val[array_index] << std::endl;
+      std::cout << "array_index: " << array_index << std::endl;
+      std::cout << "list_index: " << list_index << std::endl;
     }
     if (array_index == ARRSIZE - 1) //checks if the index has surpassed reached the arrsize.
     {
