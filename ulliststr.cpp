@@ -161,7 +161,7 @@ void ULListStr::pop_front()
   else
   {
     //deletes the furthest front node.
-    head_->first--; 
+    head_->first++; 
     size_--;
   }
 }
