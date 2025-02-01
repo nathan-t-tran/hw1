@@ -11,7 +11,6 @@ the function below should be the only one in this file.
 */
 
 #include "split.h"
-#include <iostream>
 #include <cstddef>
 using namespace std;
 
@@ -21,25 +20,25 @@ using namespace std;
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
-  Node* temp_in = nullptr;
-  if (in == NULL) //checks if the initial list is empty
+  if (in == nullptr) // Base case: End of list
   {
     return;
   }
 
-  if (in->value % 2 == 0) //checks if even
+  Node* temp = in; // Store current node
+  in = in->next;   // Move `in` forward before recursion
+
+  if (temp->value % 2 == 0) // Even number
   {
-    temp_in = in;
-    in = NULL;
-    evens = new Node (temp_in->value, nullptr);
-    split(temp_in->next, odds, evens->next);
+    evens = temp;
+    evens->next = nullptr; // Disconnect from original list
+    split(in, odds, evens->next);
   }
-  else //else it must be odd
+  else // Odd number
   {
-    temp_in = in;
-    in = NULL;
-    odds = new Node (temp_in->value, nullptr);
-    split(temp_in->next, odds->next, evens);
+    odds = temp;
+    odds->next = nullptr; // Disconnect from original list
+    split(in, odds->next, evens);
   }
 }
 
