@@ -76,6 +76,7 @@ void ULListStr::pop_back()
     {
       delete tail_;
       tail_ = head_ = NULL; //resets the entire list as empty
+      size_--;
     }
     else
     {
@@ -147,6 +148,7 @@ void ULListStr::pop_front()
     {
       delete head_;
       head_ = tail_ = NULL; //resets the entire list as empty
+      size_--;
     }
     else
     {
