@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include "ulliststr.h"
+#include <iostream>
 
 ULListStr::ULListStr()
 {
@@ -32,11 +33,20 @@ size_t ULListStr::size() const
  */
 void ULListStr::push_back(const std::string& val)
 {
-  if (tail_->last == ARRSIZE) //no more space in the back to add val
+  if (tail_ == NULL) //if list is empty
+  {
+    tail_ = new Item(); //creates new Item
+    tail_->val[0] = val; //inserts val into new Item array
+    tail_->last++; //increments the last
+    head_ = tail_; //since empty list head and tail will be the same.
+    size_++; //increases the size
+  }
+  else if (tail_->last == ARRSIZE) //no more space in the back to add val
   {
     Item* temp = tail_; //holds the old address of old tail_
     tail_ = new Item(); //creates a new tail_
     tail_->prev = temp; //connects new tail with the old tail
+    temp->next = tail_; //connects old tail to new tail.
     tail_->val[0] = val; //adds val to the front of the new array
     tail_->last = 1; //updates last
     size_++; //increments size of linked list
@@ -44,7 +54,7 @@ void ULListStr::push_back(const std::string& val)
   else //there is space to add val
   {
     int back_index = tail_->last; //gets the index of the furthest back val in array
-    tail_->val[back_index] = val; //adds the new val to the back of the array.
+    tail_->val[back_index - 1] = val; //adds the new val to the back of the array.
     tail_->last = back_index + 1; //updates last loc
     size_++; //increments size of linked list
   }
@@ -55,8 +65,32 @@ void ULListStr::push_back(const std::string& val)
  *   - MUST RUN in O(1)
  */
 void ULListStr::pop_back()
-{
-
+{ 
+  if (size() == 0)
+  {
+    return;
+  }
+  else if (tail_->last - tail_->first == 1) //checks if the the array currently only has one value
+  {
+    if (tail_ == head_) //this means that this is the only Item.
+    {
+      delete tail_;
+      tail_ = head_ = NULL; //resets the entire list as empty
+    }
+    else
+    {
+      tail_ = tail_->prev;
+      tail_->next = NULL;
+      delete tail_;
+      size_--;
+    }
+  }
+  else
+  {
+    //deletes the furthest back node.
+    tail_->last--; 
+    size_--;
+  }
 }
 
 /**
@@ -68,14 +102,24 @@ void ULListStr::pop_back()
  */
 void ULListStr::push_front(const std::string& val)
 {
-  if (head_->first == 0) //no more room to add val
+  if (head_ == NULL)
+  {
+    head_ = new Item(); //creates new Item
+    head_->val[ARRSIZE - 1] = val; //sets the back of the array with val
+    head_->first = ARRSIZE - 1; //updates first
+    head_->last = ARRSIZE; //updates last
+    tail_ = head_; //since empty
+    size_++; //increases the size
+  }
+  else if (head_->first == 0) //no more room to add val
   {
     Item* temp = head_; //holds the address of the old head_
     head_ = new Item(); //creates a new item
-    head_->next = temp; //connects new head with the old head;
+    head_->next = temp; //connects new head with the old head
+    temp->prev = head_; //connects old head to new head
     head_->val[ARRSIZE - 1] = val; //Sets value at the end of the new array
     head_->first = ARRSIZE - 1; //updates the new front val loc
-    head_->last = ARRSIZE; //sets the last val
+    head_->last = ARRSIZE; //sets the last val external
     size_++; //increments size of linked list
   }
   else //there is room to add val
@@ -93,7 +137,31 @@ void ULListStr::push_front(const std::string& val)
  */
 void ULListStr::pop_front()
 {
-  
+  if (size() == 0)
+  {
+    return;
+  }
+  else if (head_->last - head_->first == 1) //checks if the the array currently only has one value
+  {
+    if (tail_ == head_) //this means that this is the only Item.
+    {
+      delete head_;
+      head_ = tail_ = NULL; //resets the entire list as empty
+    }
+    else
+    {
+      head_ = head_->next;
+      tail_->prev = NULL;
+      delete head_;
+      size_--;
+    }
+  }
+  else
+  {
+    //deletes the furthest front node.
+    head_->first--; 
+    size_--;
+  }
 }
 
 /**
@@ -133,11 +201,6 @@ std::string* ULListStr::getValAtLoc(size_t loc) const
 
   for (int list_index = 0; list_index < loc; list_index++)
   {
-    if (list_index == loc) //when they match!
-    {
-      item_atLoc = &temp->val[array_index]; //sets the return equal
-    }
-
     if (array_index == ARRSIZE - 1) //checks if the index has surpassed reached the arrsize.
     {
       temp = temp->next; //moves Item forward
@@ -148,6 +211,9 @@ std::string* ULListStr::getValAtLoc(size_t loc) const
       array_index++; //moves index forward
     }
   }
+
+  item_atLoc = &temp->val[array_index]; //sets the return equal to what is found.
+
   return item_atLoc; 
 }
 
