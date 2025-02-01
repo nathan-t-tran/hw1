@@ -172,7 +172,15 @@ void ULListStr::pop_front()
  */
 std::string const & ULListStr::back() const
 {
-  return tail_->val[tail_->last - 1]; //returns back element of list
+  if (tail_->last == 0)
+  {
+    return tail_->val[0];
+  }
+  else
+  {
+    return tail_->val[tail_->last - 1];
+  }
+
 }
 
 /**
